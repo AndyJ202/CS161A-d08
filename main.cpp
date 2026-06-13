@@ -26,6 +26,7 @@ void goodByeMessage();
 void doubleInputValidation(double &userInteger, string prompt);
 void monthlyIncomeSources(double &income);
 void monthlyExpenses(double &expenses);
+void overUnderCheck(double income, double expenses);
 
 //Main function
 int main() {
@@ -40,20 +41,7 @@ int main() {
   cout << "\n" << "Total Income Amount: $" << totalIncome << endl;
   cout << "Total Expenses: $" << totalExpenses << endl;
   cout << "Net total: $" << totalIncome - totalExpenses <<endl;
-
-  if (totalIncome == totalExpenses) {
-    cout << "\nIncome matched the required expenses!" << endl;
-  }
-
-  else if (totalIncome > totalExpenses) {
-    cout << "\nIncome exceeded the required expenses by $" << totalIncome - totalExpenses << "!" << endl;
-  }
-
-  else {
-    cout << "\nOh no! Expenses exceeded the required income by $" << totalExpenses - totalIncome << "." << endl;
-  }
-
-
+  overUnderCheck(totalIncome, totalExpenses);
   goodByeMessage();
 
   return 0;
@@ -103,4 +91,16 @@ void monthlyExpenses(double &expenses) {
   doubleInputValidation(entertainment,"Please enter the monthly expenses for entertainment: ");
 
   expenses = food + housing + entertainment;
+}
+
+void overUnderCheck(double income, double expenses) {
+  if (income == expenses) {
+    cout << "\nIncome matched the required expenses!" << endl;
+  }
+  else if (income > expenses) {
+    cout << "\nIncome exceeded the required expenses by $" << income - expenses << "!" << endl;
+  }
+  else {
+    cout << "\nOh no! Expenses exceeded the required income by $" << expenses - income << "." << endl;
+  } 
 }
